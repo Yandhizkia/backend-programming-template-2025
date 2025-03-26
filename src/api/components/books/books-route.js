@@ -13,6 +13,11 @@ module.exports = (app) => {
   // Create a new book
   route.post('/', booksController.createBook);
 
+  app.get('/books', (request, response) => {
+    const offset = request.query.offset || 25;
+    const limit = request.query.limit || 10;
+    response.send(`Offset: ${offset}; Limit: ${limit}`);
+});
   // TODO: Get a book by id
 
   // TODO: Update a book by id

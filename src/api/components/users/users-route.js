@@ -24,4 +24,11 @@ module.exports = (app) => {
 
   // Delete user
   route.delete('/:id', usersController.deleteUser);
+
+  // Offset Limit
+  app.get('/users', (request, response) => {
+    const offset = request.query.offset || 0;
+    const limit = request.query.limit || 20;
+    response.send(`Offset: ${offset}; Limit: ${limit}`);
+});
 };
